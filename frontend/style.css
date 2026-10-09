@@ -1,0 +1,341 @@
+/* ===================================================
+   MINI CALCULATOR - HORIZONTAL GRID & COMPACT LAYOUT
+   =================================================== */
+
+/* 1. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 2. Page Canvas - Centers the calculator on screen */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+}
+
+/* 3. Calculator Card - Holds everything in a neat container */
+.calculator-card {
+    background: rgba(30, 41, 59, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+}
+
+/* 4. Heading */
+h1 {
+    font-size: 1.75rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+}
+
+/* 5. Inputs Container - Places both inputs side-by-side horizontally */
+.inputs-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+input[type="number"] {
+    flex: 1;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #334155;
+    border-radius: 8px;
+    background-color: #0f172a;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+/* 6. Result Screen - Prominently positioned right under the inputs */
+#result {
+    min-height: 52px;
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #0b1120;
+    border: 1.5px solid #38bdf8;
+    border-radius: 10px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+#result:empty::before {
+    content: "Result will appear here";
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: normal;
+}
+
+/* 7. Buttons Grid - 4 Horizontal Columns, 3 Rows (No Scrolling!) */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+/* 8. Button Styling & Interactive Effects */
+button {
+    width: 100%;
+    padding: 12px 6px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Primary Operations styling (Add, Subtract, Multiply, Divide) */
+#addBtn,
+#subtractBtn,
+#multiplyBtn,
+#divideBtn {
+    background-color: #0284c7;
+}
+
+/* Hover State - Lifts button slightly with a glow */
+button:hover {
+    background-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+}
+
+#addBtn:hover,
+#subtractBtn:hover,
+#multiplyBtn:hover,
+#divideBtn:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+/* Clicked / Pressed State */
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* 9. Mobile Responsiveness */
+@media (max-width: 440px) {
+    .buttons-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .inputs-container {
+        flex-direction: column;
+    }
+    body {
+        align-items: flex-start;
+    }
+    #historyToggle {
+        font-size: 8px;
+        right: 0;
+        top: -5 ;
+        padding: 5px 10px;
+        
+    }
+    h1{
+        font-size: 24px;
+    }
+}
+
+#historyToggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    padding: 9px 14px;
+    background-color: #0284c7;
+    z-index: 10;
+}
+
+#historyToggle:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+.history-section {
+    position: fixed;
+    top: 64px;
+    right: 20px;
+    width: min(340px, calc(100vw - 40px));
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 18px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    z-index: 9;
+}
+
+.history-section h2 {
+    margin-bottom: 12px;
+    color: #38bdf8;
+    font-size: 1.1rem;
+}
+
+#historyList {
+    padding-left: 24px;
+}
+
+#historyList li {
+    padding: 8px 0;
+    border-bottom: 1px solid #334155;
+    color: #e2e8f0;
+    overflow-wrap: anywhere;
+}
+
+.input-with-ans {
+    display: flex;
+    flex: 1;
+    gap: 8px;
+    min-width: 0;
+}
+
+.input-with-ans input {
+    flex: 1;
+    min-width: 0;
+}
+
+#ansBtn {
+    width: auto;
+    flex: 0 0 56px;
+    padding: 8px;
+}
+
+
+#historyList li {
+    position: relative;
+    padding-right: 60px;
+}
+
+.repeat-history-btn {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 0 4px;
+    background: transparent;
+    color: #38bdf8;
+    font-size: 1.2rem;
+    line-height: 1;
+    box-shadow: none;
+
+}
+
+.repeat-history-btn:hover {
+    background: transparent;
+    color: #7dd3fc;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: none;
+}
+
+.delete-history-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 0 4px;
+    background: transparent;
+    color: #f87171;
+    font-size: 1.2rem;
+    line-height: 1;
+    box-shadow: none;
+}
+
+.delete-history-btn:hover {
+    background: transparent;
+    color: #ef4444;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: none;
+}
+
+#clearHistoryBtn {
+    width: auto;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    background-color: #b91c1c;
+}
+
+#clearHistoryBtn:hover {
+    background-color: #dc2626;
+    box-shadow: none;
+}
+
+
+.history-section {
+    background: rgba(15, 23, 42, 0.98);
+}
+
+#historyList .empty-history {
+    list-style: none;
+    margin-left: -24px;
+    padding: 10px 0;
+    color: #94a3b8;
+    font-style: italic;
+    text-align: center;
+}
+
+.buttons-grid button:not(#historyToggle) {
+    height: 52px;
+    padding: 8px;
+}
+
+#historySearch {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1.5px solid  #334155;
+    border-radius: 8px;
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-size: 0.95rem;
+    outline: none;
+
+}
+
+#historySearch:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+

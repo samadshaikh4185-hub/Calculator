@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="calculator-card">
+        <h1>Mini Calculator</h1>
+
+        <div class="inputs-container">
+            <div class="input-with-ans">
+                <input type="number" id="num1" placeholder="First number">
+                
+            </div>
+
+            <input type="number" id="num2" placeholder="Second number">
+        </div>
+
+        <p id="result"></p>
+
+        <div class="buttons-grid">
+            <button id="addBtn" title="Add" aria-label="Add"><i class="fa-solid fa-plus"></i></button>
+            <button id="subtractBtn" title="Subtract" aria-label="Subtract"><i class="fa-solid fa-minus"></i></button>
+            <button id="multiplyBtn" title="Multiply" aria-label="Multiply"><i class="fa-solid fa-xmark"></i></button>
+            <button id="divideBtn" title="Divide" aria-label="Divide"><i class="fa-solid fa-divide"></i></button>
+            <button id="powerBtn" title="Power" aria-label="Power"><i class="fa-solid fa-superscript"></i></button>
+            <button id="modulusBtn"  title="Modulus" aria-label="Modulus"><i class="fa-solid fa-percent"></i></button>
+            <button id="percentageBtn" title="Percentage" aria-label="Percentage"><i class="fa-solid fa-chart-pie"></i></button>
+            <button id="squareBtn" title="Square" aria-label="Square"><i class="fa-solid fa-superscript"></i></button>
+            <button id="squarerootBtn" title="SQRT" aria-label="SQRT"><i class="fa-solid fa-square-root-variable"></i></button>
+            <button id="cubeBtn" title="Cube" aria-label="Cube"><i class="fa-solid fa-cubes"></i></button>
+            <button id="cuberootBtn" title="Cuberoot" aria-label="Cuberoot"><i class="fa-solid fa-cube"></i></button>
+            <button id="absolutevalueBtn" title="Absolute value" aria-label="Absolute value"><i class="fa-solid fa-arrows-left-right-to-line"></i> </button>
+            <button id="factorialBtn" title="Factorial" aria-label="Factorial"><strong>!</strong> </button>
+            <button id="naturallogBtn" title="Naturallog" aria-label="Naturallog"><strong>ln</strong></button>
+            <button id="sineBtn" title="Sine(degrees)" aria-label="Sine(degrees)"><strong>sin°</strong></button>
+            <button id="cosineBtn" title="Cosine(degrees)" aria-label="Cosine(degrees)"><strong>cos°</strong></button>
+            <button id="tanBtn" title="Tangent" aria-label="Tangent"><strong>tan°</strong></button>
+            <button id="logarithm1Btn" title="Log with base" aria-label="Log with base"><strong>logₐ</strong></button>
+            <button id="arcsineBtn" title="Sine Inverse" aria-label="Sine Inverse"><strong>sin⁻¹</strong></button>
+            <button id="arccosineBtn" title="Cos Inverse" aria-label="Cos Inverse"><strong>cos⁻¹</strong></button>
+            <button id="arctanBtn" title="Tan Inverse" aria-label="Tan Inverse"><strong>tan⁻¹</strong></button>
+            <button id="logarithmBtn" title="Log With Base10" aria-label="Log With Base10"><strong>log₁₀</strong></button>
+            <button id="repeatBtn" type="button">Repeat Last</button>
+            <button id="historyToggle" type="button">History</button>
+            <button id="ansBtn" type="button" >ANS</button>
+        <section class="history-section">
+            <h2>History</h2>
+            <input type="text" id="historySearch" placeholder="search history here...">
+            <button id="clearHistoryBtn" type="button">Clear All</button>
+            <ol id="historyList"></ol>
+        </section>
+        </div>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/325910927b.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
